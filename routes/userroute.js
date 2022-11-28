@@ -6,7 +6,7 @@ const userController = require('../controller/userController')
 
 router.get('/',userController.index)
 
-router.post('/store',userController.create)
+router.post('/create',userController.create)
 router.post('/update',userController.update)
 router.post('/delete',userController.destroy)
 

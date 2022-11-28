@@ -1,6 +1,7 @@
-const User = require('../model/user');
+const User = require('../model/staffregistration');
 
 const userController = {
+    
 index: async(req,res)=>{
     
   try{
@@ -22,15 +23,17 @@ index: async(req,res)=>{
 },
 create:async(req,res)=>{
  try {   let user = new User({
-        firstname:rew.body.firstname,
-        lastname:rew.body.lastname,
-        phonenumber:rew.body.phonenumber,
-        city:rew.body.city,
-        country:rew.body.country
+        firstname:req.body.firstname,
+        lastname:req.body.lastname,
+        email:req.body.email,
+        password:req.body.password,
+        phonenumber:req.body.phonenumber,
+        city:req.body.city,
+        country:req.body.country
     })
 
     const result = await User.create(user);
-    if (!user) return res.status(200).json({
+    if (!result) return res.status(200).json({
         status:"success",
         message:"successfully created",
         user:user
